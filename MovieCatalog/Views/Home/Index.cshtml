@@ -1,0 +1,53 @@
+﻿@model MovieCatalog.Models.PageClass
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <table>
+        @foreach (var movie in Model.pageMovies)
+        {
+            <tr>
+                <td class="poster">
+                    <img class="posterimage" src=@movie.poster>
+                </td>
+                <td class="infom">
+                    <div class="name">@Html.ActionLink(@movie.name, "Movie", "Home", new { id = movie.ID }, new {})</div>
+                    <div class="yearprod">@movie.year @movie.producer</div>
+                    <br />
+                    <div class="description">@movie.description</div>
+                    <div class="user">@movie.user</div>
+                    <div class="modifybuttons">
+                    @if (Session["currUser"] != null)
+                    {
+                        if (movie.user == Session["currUser"].ToString())
+                        {
+                            @Html.ActionLink("Изменить", "UpdateMovie", "Home", new { id = movie.ID }, new { @class = "btn btn-success", @id= "UpdateMovie" })
+                            @Html.ActionLink("Удалить", "Delete", "Home", new { id = movie.ID }, new { @class = "btn btn-danger" })
+                        }
+                    }
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+
+    <ul class="pagination">
+        @foreach (int page in Model.pagesAvaible.OrderBy(x => x))
+        {
+            if (page == Model.currPage)
+            {
+                <li class="page-item active">
+                    <a href="?page=@page.ToString()">@page.ToString()</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    <a href="?page=@page.ToString()">@page.ToString()</a>
+                </li>
+            }
+        }
+    </ul>
+</div>

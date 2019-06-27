@@ -1,0 +1,33 @@
+﻿@model MovieCatalog.Models.Movies
+
+@{
+    ViewBag.Title = "UpdateMovie";
+}
+<div class="jumbotron">
+    <div class="main">
+        <form action="~/Home/AddChange" id="logform" method="post">
+            <div id="poster">
+                <div class="file-field">
+                    <div class="z-depth-1-half mb-4">
+                        <img src="@Model.poster" id="posterimage" class="img-fluid">
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="btn btn-mdb-color btn-rounded float-left">
+                            <input type="file" id="file" onchange="setimage()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info">
+                <input type="text" hidden="hidden" value="@Model.poster" name="postersrc" id="postersrc">
+                <input type="text" hidden="hidden" value="@Model.ID" name="id">
+                <input type="text" class="form-control" value="@Model.name" name="name" id="name" placeholder="Наименование">
+                <input type="text" class="form-control" id="year" name="year" value="@Model.year" placeholder="Год">
+                <input type="text" class="form-control" id="producer" name="producer" value="@Model.producer" placeholder="Режиссер">
+                <textarea class="form-control" id="Textarea" rows="5" name="description" placeholder="Описание">@Model.description</textarea>
+                <br />
+                <button type="submit" class="btn btn-success" id="savebutton">Сохранить</button>
+            </div>
+        </form>
+    </div>
+</div>

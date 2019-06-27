@@ -1,0 +1,32 @@
+﻿@model MovieCatalog.Models.Movies
+@{
+    ViewBag.Title = "Movie";
+}
+
+<div class="jumbotron">
+    <table>
+            <tr>
+                <td class="poster">
+                    <img class="posterimage" src=@Model.poster>
+                </td>
+                <td class="infom">
+                    <div class="name">@Model.name</div>
+                    <div class="yearprod">@Model.year @Model.producer</div>
+                    <br />
+                    <div class="description">@Model.description</div>
+                    <div class="user">@Model.user</div>
+                    <div class="modifybuttons">
+                        @if (Session["currUser"] != null)
+                        {
+                            if (Model.user == Session["currUser"].ToString())
+                            {
+                                @Html.ActionLink("Изменить", "UpdateMovie", "Home", new { id = Model.ID }, new { @class = "btn btn-success", @id = "UpdateMovie" })
+                                @Html.ActionLink("Удалить", "Delete", "Home", new { id = Model.ID }, new { @class = "btn btn-danger" })
+                            }
+                        }
+                    </div>
+                </td>
+            </tr>
+    </table>
+</div>
+

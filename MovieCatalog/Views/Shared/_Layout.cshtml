@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог фильмов</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Content/jsfunctions")
+   
+</head>
+<body>
+    @if (Session["error"] != null)
+    {
+    <div class="alert alert-danger" role="alert">
+        <strong>Ошибка: </strong>@Session["error"].ToString()
+    </div>
+        Session["error"] = null;
+    }
+
+    <div class="logincontainer" id="logincontainer">
+        <form action="~/Home/Login" id="logform" method="post">
+            <br />
+            <input type="text" class="form-control" id="login" name="login" placeholder="Введите логин">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Введите пароль">
+            <br />
+            <button type="button" class="btn btn-link" id="halfreg" onclick="setregister()">Регистрация</button>
+            <button type="submit" class="btn btn-success" id="halfjoin">Вход</button>
+            <br /><br />
+            <button type="button" class="btn btn-danger" id="full" onclick="setvisible('0')">Закрыть</button>
+        </form>
+    </div>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                @Html.ActionLink("Каталог фильмов", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            @if (Session["currUser"] == null)
+            {
+                <button type="button" class="btn btn-link" id="join" onclick="setvisible('1')">Войти или зарегистрироваться</button>
+            }
+            else
+            {
+                <form action="~/Home/Exit" method="post">
+                    <button type="submit" class="btn btn-danger" id="join">Выйти</button>
+                    <button type="button" class="btn btn-link" id="join">@Session["currUser"]</button>
+                    @Html.ActionLink("Добавить фильм", "UpdateMovie", "Home", new { area = "" }, new { @class = "btn btn-success", @id= "join" })
+                </form>
+            }
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>@DateTime.Now.Year – Денис Семенов</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

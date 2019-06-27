@@ -1,0 +1,131 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+
+
+.poster {
+    width: 100%;
+    padding-bottom: 10px;
+    float:left;
+}
+
+.infom {
+    width: 80%;
+}
+
+.info {
+    float: right;
+    width:70%;
+}
+
+.main{
+    width:100%;
+    height:500px;
+}
+
+.name{
+    font-size:xx-large;
+}
+
+.yearprod {
+    font-size: x-small;
+}
+
+.description {
+    font-size: large;
+}
+
+.user {
+    font-size: small;
+    text-align:right;
+}
+
+.posterimage{
+    width:80%;
+    height:auto;
+}
+
+.modifybuttons{
+    text-align:right;
+    padding-top:10px;
+}
+
+.logincontainer {
+    width: 300px;
+    height: 240px;
+    padding: 15px;
+    border-radius: 3px;
+    border: 2px solid lightgrey;
+    background-color: whitesmoke;
+    position: absolute;
+    color: black;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    visibility: hidden;
+}
+
+#full{
+    width:100%;
+}
+
+#savebutton {
+    width: 100%;
+}
+
+#halfreg {
+    width: 49%;
+}
+
+#halfjoin {
+    width: 49%;
+}
+
+
+#join{
+    float:right;
+    margin-top:8px;
+}
+
+#addfilm {
+    float: right;
+    margin-top: 8px;
+}
+
+#poster {
+    width: 30%;
+    padding-bottom: 10px;
+    float: left;
+}
+
+#posterimage {
+    width: 90%;
+    height: auto;
+}
+
+#name{
+    width:100%;
+}
+
+#Textarea {
+    width: 100%;
+}
+
+#UpdateMovie{
+    margin-right:10px;
+}
